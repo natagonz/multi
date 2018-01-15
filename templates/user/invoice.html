@@ -1,0 +1,91 @@
+{% extends "layouts/dashboardtemplate.html" %}
+
+{% block title %} Invoice {% endblock%}
+
+
+{% block content %}
+
+
+<link href="{{url_for ('static',filename='css/invoice.css')}}" rel="stylesheet"/> 
+
+<div class="receipt-content">
+    <div class="container bootstrap snippet">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="invoice-wrapper">
+					<div class="intro">
+						Hi <strong>{{ invoice.name }}</strong>, 
+						<br>
+						Ini adalah invoice untuk layanan dari C3 Carwash
+					</div>
+
+					<div class="payment-info">
+						<div class="row">
+							<div class="col-sm-6">
+								<span>Tanggal Pembayaran</span>
+								<strong>{{ invoice.date.strftime("%d/%m/%Y") }}</strong>
+							</div>
+							
+						</div>
+					</div>
+
+					<div class="payment-details">
+						<div class="row">
+							<div class="col-sm-6">
+								<span>Invoiced</span>
+								<strong>
+									{{ invoice.name }}
+								</strong>
+								<p>
+									{{ invoice.mobil }}<br>
+									{{ invoice.plat }}<br>
+											</p>
+							</div>
+							<div class="col-sm-6 text-right">
+								<span>Payment To</span>
+								<strong>
+									C3 Carwash
+								</strong>								
+							</div>
+						</div>
+					</div>
+
+					<div class="line-items">
+						<div class="headers clearfix">
+							<div class="row">
+								<div class="col-xs-4">Description</div>								
+								<div class="col-xs-5 text-right">Amount</div>
+							</div>
+						</div>
+						<div class="items">
+							<div class="row item">
+								<div class="col-xs-4 desc">
+									{{ invoice.paket }}
+								</div>								
+								<div class="col-xs-5 amount text-right">
+									Rp {{ harga}}
+								</div>
+							</div>
+							
+						</div>
+						<div class="total text-right">
+							
+							<div class="field grand-total">
+								Total <span>{{ harga }}</span>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="footer">
+					Copyright © 2017. c3carwash.com
+				</div>
+			</div>
+		</div>
+	</div>
+</div>    
+
+             
+
+{% endblock %}

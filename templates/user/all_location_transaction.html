@@ -1,0 +1,40 @@
+{% extends "layouts/dashboardtemplate.html" %}
+{% block title %} Transaction {% endblock %}
+
+
+{% block content %}
+<link href="{{url_for ('static',filename='css/member.css')}}" rel="stylesheet"/> 
+<div class="row">                
+    <div class="col-lg-11 col-md-10">
+        <div class="card">
+            <div class="content">
+              <div class="table-responsive"> 
+
+            <table class="table"> 
+                <thead>
+                <tr>
+                    <td>Lokasi</td>                            
+                    <td></td>
+                </tr>
+                </thead>               
+               
+                {% for location in locations  %}
+
+                    <tbody>
+                        <tr>
+                            <td>{{ location.location }}</td>                            
+                            <td><a href="/dashboard/location/transaction/{{ location.id }}" class="btn btn-success">Lihat</a></td>
+                            </tr>
+                     </tbody>           
+                           
+
+                {% endfor %}            
+                
+                      </table>
+                 </div>     
+               </div>  
+          </div>            
+     </div>       
+</div>
+
+{% endblock %}

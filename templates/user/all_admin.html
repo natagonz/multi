@@ -1,0 +1,62 @@
+{% extends "layouts/dashboardtemplate.html" %}
+{% block title %} Admin {% endblock %}
+
+
+{% block content %}
+<ul id="social_side_links">
+  <li><a href="/dashboard/add-user"><img class="icon-float" src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/512/add_blue.png" alt="" /></a></li>
+</ul>
+<link href="{{url_for ('static',filename='css/member.css')}}" rel="stylesheet"/> 
+<div class="row">                
+    <div class="col-lg-11 col-md-10">
+        <div class="card">
+            <div class="content">
+              <div class="table-responsive"> 
+
+            <table class="table"> 
+                <thead>
+                <tr>
+                    <td>username</td>
+                    <td>email</td>                    
+                    <td>lokasi</td>                   
+                    <td></td>
+                </tr>
+                </thead>
+
+                {% for user in users  %}
+                    <tbody>
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.location }}</td>                            
+                            <td><button type="button" class="btn btn-danger" onclick="myFunction()">Delete</button></td>
+                            </tr>
+                     </tbody>           
+                            <script>
+                            function myFunction() {
+                                 var x = window.confirm("Are You Sure ?");
+                                    if(x){
+                                           window.location = '/dashboard/delete-user/{{ user.id}}' ;
+                                            }
+                                     else {
+                                           return false;
+                                          }
+                                    }    
+                            </script>
+
+
+
+                {% endfor %}
+
+
+
+
+
+                      </table>
+                 </div>     
+               </div>  
+          </div>            
+     </div>       
+</div>
+
+{% endblock %}

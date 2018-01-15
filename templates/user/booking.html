@@ -1,0 +1,90 @@
+{% extends "layouts/dashboardtemplate.html" %}
+
+{% block title %} Booking {% endblock %}
+
+
+{% block content %}
+<div class="row">                
+                  <div class="col-lg-11 col-md-10">
+                        <div class="card">
+                            <div class="header">                            	
+							    <h4 class="title">Booking</h4>
+                            </div>
+                            <div class="content">
+
+                           	{% from "includes/_formhelpers.html" import render_field %}
+                               <form method="POST" enctype="multipart/form-data">
+               				   {{ form.hidden_tag() }}
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.name, class="form-control",placeholder="Nama")}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.email, class="form-control",placeholder="Email")}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.phone, class="form-control",placeholder="Telepon")}}
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    <div class="row">
+                                         <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.paket, class="form-control",placeholder="Mobil")}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.mobil, class="form-control",placeholder="Mobil")}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.plat, class="form-control",placeholder="Plat")}}
+                                            </div>
+                                        </div>
+                                        
+                                    </div>    
+                                    
+                                    <div class="row">
+                                        {% if current_user.role ==  "user" or current_user.role == "superuser"%}
+                                         <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.role, class="form-control",placeholder="Type")}}
+                                            </div>
+                                        </div>
+                                        {% endif %} 
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.location, class="form-control",placeholder="Lokasi")}}
+                                            </div>
+                                        </div>   
+                                    </div>      
+                                                                                              
+                                    
+                                    
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Simpan</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+			
+          </div>
+
+
+
+
+
+
+
+
+{% endblock %}

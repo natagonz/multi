@@ -1,0 +1,55 @@
+{% extends "layouts/dashboardtemplate.html" %}
+
+{% block title %} Member {% endblock %}
+
+
+{% block content %}
+<ul id="social_side_links">
+  <li><a href="/dashboard/add-member"><img class="icon-float" src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/512/add_blue.png" alt="" /></a></li>
+</ul>
+<link href="{{url_for ('static',filename='css/member.css')}}" rel="stylesheet"/> 
+
+<div class="row">                
+    <div class="col-lg-11 col-md-10">
+        <div class="card">
+            <div class="content">
+              <div class="table-responsive">
+
+            <table class="table"> 
+                <thead>
+                <tr>
+                    <td>Nama</td>                    
+                    <td>Mobil</td>
+                    <td>Plat</td>
+                    <td>Tanggal</td> 
+                    <td></td>                   
+                </tr>
+                </thead>
+
+                {% for member in members  %}
+                    <tbody>
+                        <tr>
+                            <td>{{ member.username }}</td>                    
+                            <td>{{ member.mobil }}</td>
+                            <td>{{ member.plat }}</td>
+                            <td>{{ member.date.strftime("%d-%m-%Y") }}</td>
+                            <td><a href="/dashboard/member/{{ member.id }}" class="btn btn-success">Lihat</a></td>
+                        </tr>
+                     </tbody>           
+                            
+
+
+                {% endfor %}
+
+
+
+
+
+                      </table>
+                 </div> 
+               </div>      
+          </div>            
+     </div>       
+</div>
+
+{% endblock %}

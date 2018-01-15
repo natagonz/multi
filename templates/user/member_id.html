@@ -1,0 +1,62 @@
+{% extends "layouts/dashboardtemplate.html" %}
+
+{% block title %} Member {% endblock %}
+
+{% block content %}
+
+<link href="{{url_for ('static',filename='css/member_id.css')}}" rel="stylesheet"/> 
+<div class="row">
+      <div class="col-xs-12 col-sm-9">
+        
+        <!-- User profile -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Member profile</h4>
+          </div>        
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Nomor Telepon</strong></th>
+                  <td>{{ member.phone }}</td>
+                </tr>
+                <tr>
+                  <th><strong>Member Email</strong></th>
+                  <td>{{ member.email }}</td>
+                </tr>
+                 <tr>
+                  <th><strong>Mobil</strong></th>
+                  <td>{{ member.mobil }}</td>
+                </tr>
+                <tr>
+                  <th><strong>Plat Mobil</strong></th>
+                  <td>{{ member.plat }}</td>
+                </tr>
+                <tr>
+                  <th><strong>Tanggal</strong></th>
+                  <td>{{ member.date.strftime("%d-%m-%Y") }}</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            <a class="btn btn-primary" href=/dashboard/edit-member/{{ member.id }}>Edit</a></button>
+            <button type="button" class="btn btn-danger" onclick="myFunction()">Delete</button>
+         
+        </div>
+        </div>
+       </div> 
+      </div>
+      <script>
+                function myFunction() {
+                     var x = window.confirm("Are You Sure ?");
+                        if(x){
+                               window.location = '/dashboard/delete-member/{{ member.id}}' ;
+                                }
+                         else {
+                               return false;
+                              }
+                        }    
+                </script> 
+
+ 
+{% endblock %}        

@@ -1,0 +1,164 @@
+{% extends "layouts/dashboardtemplate.html" %}
+
+{% block title %} Antrean {% endblock %}
+
+
+{% block content %}
+
+{% if current_user.role == "member" %}
+<div class="row">                
+    <div class="col-lg-11 col-md-10">
+        <div class="card">
+            <div class="content">
+              <div class="table-responsive"> 
+
+            <table class="table"> 
+                <thead>
+                <tr>
+                    <td>No</td>                    
+                    <td>Mobil</td>
+                    <td>Plat</td>
+                    <td>Paket</td>
+                    <td>Status</td> 
+                    <td>Type</td>
+                    <td>Lokasi</td>                   
+                   
+                </tr>
+                </thead>
+
+               
+                   
+                     {% for antre in antrean %} 
+                    <tbody> 
+                       {% if antre.status == "Selesai" %}                      
+                         <tr class="alert alert-danger" role="alert"> 
+                            <td>{{ loop.index }}</td>
+                            <td>{{ antre.mobil }}</td> 
+                            <td>{{ antre.plat }}</td>
+                            <td>{{ antre.paket }}</td>  
+                            <td>{{ antre.status }}</td>
+                            <td>{{ antre.role }}</td>  
+                            <td>{{ antre.location }}</td>
+                         </tr>   
+                        {% else %}  
+                          <tr> 
+                            <td>{{ loop.index }}</td>
+                            <td>{{ antre.mobil }}</td> 
+                            <td>{{ antre.plat }}</td> 
+                            <td>{{ antre.paket }}</td> 
+                            <td>{{ antre.status }}</td> 
+                            <td>{{ antre.role }}</td> 
+                            <td>{{ antre.location }}</td>  
+                         </tr>  
+                        {% endif %}      
+                            
+                                    
+                           
+
+                           
+                        
+                         
+                        
+                         
+
+                     </tbody>  
+                      {% endfor %}
+                    
+
+
+
+
+
+                      </table>
+                 </div>     
+               </div>  
+          </div>            
+     </div>       
+</div>
+{% else %}       
+<div class="row">                
+    <div class="col-md-12">
+        <div class="card">
+            <div class="content">
+              <div class="table-responsive"> 
+
+            <table class="table"> 
+                <thead>
+                <tr>
+                    <td>No</td>                    
+                    <td>Mobil</td>
+                    <td>Plat</td>
+                    <td>Paket</td>
+                    <td>Status</td>
+                    <td>Nama</td> 
+                    <td>Email</td>
+                    <td>Telepon</td> 
+                    <td>Type</td> 
+                    <td>Lokasi</td>
+                    <td></td> 
+                         
+                   
+                </tr>
+                </thead>
+
+               
+                   
+                     {% for antre in antrean %} 
+                    <tbody>    
+                        {% if antre.status == "Selesai" %}                
+                         <tr class="alert alert-danger" role="alert"> 
+                            <td> {{ loop.index }}</td>
+                            <td>{{ antre.mobil }}</td> 
+                            <td>{{ antre.plat }}</td>
+                            <td>{{ antre.paket }}</td> 
+                            <td>{{ antre.status }}</td>
+                            <td>{{ antre.name }}</td>
+                            <td>{{ antre.email }}</td>
+                            <td>{{ antre.phone }}</td>  
+                            <td>{{ antre.role }}</td>  
+                            <td>{{ antre.location }}</td>
+                            <td><a href="/dashboard/edit-antrean/{{ antre.id }}" class="btn btn-success">Edit</a></td>
+                          </tr>
+                        {% else %}
+                           <tr> 
+                            <td> {{ loop.index }}</td>
+                            <td>{{ antre.mobil }}</td> 
+                            <td>{{ antre.plat }}</td>
+                            <td>{{ antre.paket }}</td>  
+                            <td>{{ antre.status }}</td>
+                            <td>{{ antre.name }}</td>
+                            <td>{{ antre.email }}</td>
+                            <td>{{ antre.phone }}</td>  
+                            <td>{{ antre.role }}</td>  
+                            <td>{{ antre.location }}</td>
+                            <td><a href="/dashboard/edit-antrean/{{ antre.id }}" class="btn btn-success">Edit</a></td>
+                          </tr>
+                         {% endif %} 
+                               
+                            
+                                  
+                           
+
+                           
+                        
+                         
+                        
+                         
+
+                     </tbody>  
+                      {% endfor %}
+                    
+
+
+
+
+
+                      </table>
+                 </div>     
+               </div>  
+          </div>            
+     </div>       
+</div>        
+{% endif %}
+
+{% endblock %}

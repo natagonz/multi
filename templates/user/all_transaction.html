@@ -1,0 +1,53 @@
+{% extends "layouts/dashboardtemplate.html" %}
+{% block title %} Trasaction {% endblock %}
+
+
+{% block content %}
+<link href="{{url_for ('static',filename='css/member.css')}}" rel="stylesheet"/> 
+<div class="row">                
+    <div class="col-lg-11 col-md-10">
+        <div class="card">
+            <div class="content">
+              <div class="table-responsive"> 
+
+            <table class="table"> 
+                <thead>
+                <tr>
+                    <td>Tanggal</td>
+                    <td>Keterangan</td>
+                    <td>Debet</td>                    
+                    <td>Kredit</td>
+                </tr>
+                </thead>
+                
+                  {% for trans in transactions  %}                  
+                      <tbody>
+                          <tr>
+                              <td>{{ trans.date.strftime("%d-%m-%Y") }}</td>
+                              <td>{{ trans.description }}</td>
+                              {% if trans.income == None %}
+                                <td></td>
+                              {% else %}
+                              <td>{{ trans.income }}</td>
+                              {% endif %}
+                              {% if trans.expense == None %}
+                                <td></td>
+                              {% else %} 
+                              <td>{{ trans.expense }}</td>                                  
+                              {% endif %}
+                              </tr>
+                       </tbody>           
+                             
+                  {% endfor %}            
+
+
+
+
+                      </table>
+                 </div>     
+               </div>  
+          </div>            
+     </div>       
+</div>
+
+{% endblock %}

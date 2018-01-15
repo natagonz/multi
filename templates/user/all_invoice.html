@@ -1,0 +1,58 @@
+{% extends "layouts/dashboardtemplate.html" %}
+{% block title %} Invoice {% endblock %}
+
+
+{% block content %}
+<link href="{{url_for ('static',filename='css/member.css')}}" rel="stylesheet"/> 
+<div class="row">                
+    <div class="col-lg-11 col-md-10">
+        <div class="card">
+            <div class="content">
+              <div class="table-responsive"> 
+
+            <table class="table"> 
+                <thead>
+                <tr>
+                    <td>Mobil</td>
+                    <td>Plat</td>
+                    <td>Paket</td>                    
+                    <td></td>
+                </tr>
+                </thead>
+                {% if current_user.role == "member" %} 
+                  {% for invoice in userinvoice  %}
+                      <tbody>
+                          <tr>
+                              <td>{{ invoice.mobil }}</td>
+                              <td>{{ invoice.plat }}</td>
+                              <td>{{ invoice.paket }}</td>                            
+                              <td><a href="/dashboard/invoice/{{ invoice.id }}" class="btn btn-success">Lihat</a></td>
+                              </tr>
+                       </tbody>           
+                             
+                  {% endfor %}
+                 {% else %}
+                  {% for invoice in invoices  %}
+                      <tbody>
+                          <tr>
+                              <td>{{ invoice.mobil }}</td>
+                              <td>{{ invoice.plat }}</td>
+                              <td>{{ invoice.paket }}</td>                            
+                              <td><a href="/dashboard/invoice/{{ invoice.id }}" class="btn btn-success">Lihat</a></td>
+                              </tr>
+                       </tbody>           
+                             
+                  {% endfor %}
+                 {% endif %}
+
+
+
+
+                      </table>
+                 </div>     
+               </div>  
+          </div>            
+     </div>       
+</div>
+
+{% endblock %}

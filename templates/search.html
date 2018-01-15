@@ -1,0 +1,73 @@
+{% extends "layouts/dashboardtemplate.html" %}
+
+{% block title %} All Transaction  {% endblock %}
+
+{% block content %}
+<link href="{{url_for ('static',filename='css/search.css')}}" rel="stylesheet"/> 
+
+<div class="row">                
+                  <div class="col-lg-11 col-md-10">
+                        <div class="card">
+                            <div class="header">                            	
+							    <h4 class="title">Cari Data Transaction</h4>
+                            </div>
+                            <div class="content">
+
+                           	{% from "includes/_formhelpers.html" import render_field %}
+                               <form method="POST" enctype="multipart/form-data">
+               				   {{ form.hidden_tag() }}
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.start, class="form-control dtpick",placeholder="Tanggal")}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {{ render_field(form.end, class="form-control dtpick",placeholder="Tanggal")}}
+
+                                            </div>
+
+                                        </div> 
+                                        <div class="col-md-4">
+                                            <div class="form-group">                                       
+                                                <button type="submit" class="btn btn-info btn-fill btn-wd sub">Search</button>
+                                            </div>
+                                        </div>                                               
+                                    </div>    
+                                    
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+			
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
